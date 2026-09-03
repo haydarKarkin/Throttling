@@ -1,15 +1,16 @@
 # Throttling
 
+[![CI](https://github.com/haydarKarkin/Throttling/actions/workflows/ci.yml/badge.svg)](https://github.com/haydarKarkin/Throttling/actions/workflows/ci.yml)
+[![Swift](https://img.shields.io/badge/Swift-6.0-F05138?logo=swift&logoColor=white)](https://swift.org)
+[![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-success)](https://www.swift.org/package-manager/)
+[![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
+
 An `AsyncSequence` operator that passes the first element of every time window
 through and drops everything that arrives before the window is over.
 
 This is the leading edge variant of throttling: it never waits and never
 buffers. It is also a worked example for writing your own `AsyncSequence`
 operator, which is what the [article][article] behind it is about.
-
-## Requirements
-
-Swift 6.0, iOS 16, macOS 13.
 
 ## Installation
 
