@@ -1,3 +1,16 @@
 .build/
 .cache/
+.symbols/
+.website/
+Website/
 .DS_Store
+xcuserdata/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+timeline.xctimeline
+playground.xcworkspace
+Package.resolved
+.swiftpm
+.build/

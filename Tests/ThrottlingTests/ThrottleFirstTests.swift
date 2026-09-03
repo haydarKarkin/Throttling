@@ -83,18 +83,17 @@ struct ThrottleFirstTests {
     @Test("works on the continuous clock too")
     func continuousClock() async throws {
         let stream = AsyncStream<Int> { continuation in
-            Task {
-                for value in 1...5 {
-                    continuation.yield(value)
-                    try? await Task.sleep(for: .milliseconds(20))
-                }
-                continuation.finish()
+            for value in 1...20 {
+                continuation.yield(value)
             }
+            continuation.finish()
         }
 
-        let result = try await collect(stream.throttleFirst(for: .milliseconds(50)))
+        // Every element is already buffered when iteration starts, so a one
+        // second window can only let the first one through. Nothing here
+        // depends on how fast the machine is.
+        let result = try await collect(stream.throttleFirst(for: .seconds(1)))
 
-        #expect(result.first == 1)
-        #expect(result.count < 5)
+        #expect(result == [1])
     }
 }
